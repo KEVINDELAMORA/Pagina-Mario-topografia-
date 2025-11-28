@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ing. Mario Humberto González Dimas - Servicios Topográficos en Colima</title>
+    <meta name="description" content="Servicios profesionales de topografía en Colima. Trámites agrarios, planos, delimitación de predios y análisis GNSS. Atención personalizada y precios competitivos.">
+    
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Header/Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/campo-carretera.jpg') center/cover;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .hero-credentials {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: var(--light-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--gray);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .testimonial-project {
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 60px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5213123024501?text=Hola,%20me%20interesa%20solicitar%20una%20cotización%20de%20servicios%20topográficos" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">📐 Servicios Topográficos</div>
+            <div class="nav-cta">
+                <a href="tel:+523123024501" class="btn btn-secondary">📞 Llamar Ahora</a>
+                <a href="#contacto" class="btn btn-primary">Solicitar Cotización</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Servicios Profesionales de Topografía en Colima</h1>
+                <p class="hero-subtitle">Ing. Mario Humberto González Dimas</p>
+                <p class="hero-credentials">Ingeniero Topógrafo | Universidad de Colima | +5 años de experiencia</p>
+                
+                <div class="hero-cta">
+                    <a href="tel:+523123024501" class="btn btn-white btn-large">📞 312 302 4501</a>
+                    <a href="https://wa.me/5213123024501?text=Hola,%20me%20interesa%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-large">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <h2 class="section-title">Servicios Profesionales</h2>
+            <p class="section-subtitle">Soluciones técnicas precisas para tus proyectos</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌾</div>
+                    <h3>Trámites Agrarios y Regularización</h3>
+                    <p>Gestión completa de trámites agrarios, regularización de tierras ejidales y comunales. Asesoría personalizada en todo el proceso.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Elaboración de Planos y Escrituras</h3>
+                    <p>Planos topográficos profesionales para trámites de escrituración, registro y certificación de predios.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Delimitación y Trazo</h3>
+                    <h3>para Fraccionamientos</h3>
+                    <p>Delimitación precisa de predios, trazo y nivelación para desarrollos habitacionales y fraccionamientos.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <h3>Procesamiento y Análisis GNSS</h3>
+                    <p>Levantamientos con tecnología GNSS de última generación. Procesamiento y análisis de datos satelitales de alta precisión.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contacto" class="btn btn-primary btn-large">Solicitar Cotización Gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="section why-choose">
+        <div class="container">
+            <h2 class="section-title">¿Por Qué Elegirme?</h2>
+            <p class="section-subtitle">Ventajas de trabajar conmigo</p>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Precios Competitivos</h3>
+                    <p>Tarifas justas y accesibles sin comprometer la calidad del servicio profesional.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Rapidez en Entrega</h3>
+                    <p>Comprometido con los tiempos de entrega. Tu proyecto es mi prioridad.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">👤</div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Trato directo y seguimiento personal en cada etapa de tu proyecto.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precisión Técnica</h3>
+                    <p>Equipo profesional de última generación para resultados exactos y confiables.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Experiencia Comprobada</h3>
+                    <p>Más de 5 años de experiencia en proyectos de diversa complejidad.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Cobertura en Colima</h3>
+                    <p>Servicio en todo el estado de Colima y zonas aledañas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="proyectos">
+        <div class="container">
+            <h2 class="section-title">Proyectos Realizados</h2>
+            <p class="section-subtitle">Trabajos profesionales con tecnología de vanguardia</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/campo-carretera.jpg" alt="Levantamiento topográfico en carretera">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/estacion-total.jpg" alt="Estación total en obra">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gnss-trabajo.jpg" alt="Trabajo con equipo GNSS">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/medicion-terreno.jpg" alt="Medición de terreno">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/puente-topografia.jpg" alt="Topografía en puente">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/presa-medicion.jpg" alt="Medición en presa">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nivel-construccion.jpg" alt="Nivelación en construcción">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/equipo-carretera.jpg" alt="Equipo topográfico en carretera">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/atardecer-lago.jpg" alt="Trabajo al atardecer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Lo Que Dicen Mis Clientes</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Testimonios reales de trabajos realizados</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Excelente servicio y muy profesional. Realizó el levantamiento de mi terreno para escrituración en tiempo récord. Los planos quedaron perfectos y ya tengo mis escrituras. Totalmente recomendado."</p>
+                    <p class="testimonial-author">- Roberto Martínez</p>
+                    <p class="testimonial-project">Escrituración de predio en Villa de Álvarez</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Contraté sus servicios para un fraccionamiento y la atención fue de primera. Muy responsable con los tiempos de entrega y sus precios son muy accesibles. El trabajo quedó impecable."</p>
+                    <p class="testimonial-author">- Arq. Patricia Gómez</p>
+                    <p class="testimonial-project">Trazo para fraccionamiento residencial</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Necesitaba regularizar unas tierras ejidales y me ayudó en todo el proceso. Su asesoría fue clave para completar los trámites sin complicaciones. Un profesional de verdad."</p>
+                    <p class="testimonial-author">- Juan Carlos Ramírez</p>
+                    <p class="testimonial-project">Regularización de tierras ejidales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Solicita Tu Cotización</h2>
+            <p class="section-subtitle">Respuesta en menos de 24 horas</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Información de Contacto</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Teléfono / WhatsApp</h4>
+                            <p><a href="tel:+523123024501">312 302 4501</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">👤</div>
+                        <div>
+                            <h4>Ingeniero</h4>
+                            <p>Mario Humberto González Dimas</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Zona de Servicio</h4>
+                            <p>Colima y zonas aledañas</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🎓</div>
+                        <div>
+                            <h4>Formación</h4>
+                            <p>Universidad de Colima</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.25rem;">+5 años de experiencia</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <a href="https://wa.me/5213123024501?text=Hola,%20me%20interesa%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary" style="width: 100%;">💬 Contactar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Formulario de Contacto</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés *</label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="tramites-agrarios">Trámites Agrarios y Regularización</option>
+                                <option value="planos-escrituras">Elaboración de Planos y Escrituras</option>
+                                <option value="delimitacion-trazo">Delimitación y Trazo para Fraccionamientos</option>
+                                <option value="gnss">Procesamiento y Análisis GNSS</option>
+                                <option value="otro">Otro servicio</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Describe tu proyecto</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Cuéntame más sobre lo que necesitas..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
+                        
+                        <p style="font-size: 0.9rem; color: var(--gray); margin-top: 1rem; text-align: center;">
+                            O llámame directamente al <a href="tel:+523123024501" style="color: var(--primary); font-weight: 600;">312 302 4501</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ing. Mario Humberto González Dimas - Servicios Topográficos Profesionales en Colima</p>
+            <p style="margin-top: 0.5rem;">📐 Precisión | 🎯 Profesionalismo | ⚡ Rapidez</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler (optional enhancement)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // You can add custom form handling here if needed
+                console.log('Form submitted');
+            });
+        }
+    </script>
+</body>
+</html>
